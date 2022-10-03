@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "494248403812",
+    "firebase_url": "https://eposbuddy-9f7f3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "eposbuddy-9f7f3",
+    "storage_bucket": "eposbuddy-9f7f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494248403812:android:3b274ca58e47907aad5071",
+        "android_client_info": {
+          "package_name": "dev.jaaveeth.android.nearearthasteroids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494248403812-28n5f4nircn6a4jsc156duut49u82269.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.jaaveeth.android.nearearthasteroids",
+            "certificate_hash": "2f4111bb9a35404c61c95bf8276cd07528097eae"
+          }
+        },
+        {
+          "client_id": "494248403812-9mrg5aioknfcai9hch45lifk1tiekjrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJh6-zlMA_cdVA7p9ws0Mr5P8rCBxUGWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494248403812-9mrg5aioknfcai9hch45lifk1tiekjrl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494248403812-ihk9jfalinlbr5o43vspddnfmsk5pikg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.jaaveeth.android.nearearthasteroids"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

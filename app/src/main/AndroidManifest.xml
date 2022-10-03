@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="dev.filipebezerra.android.nearearthasteroids"
+    >
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".NeaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NearEarthAsteroids"
+        >
+        <activity
+            android:name=".NeaActivity"
+            android:theme="@style/Theme.NearEarthAsteroids.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove"
+            android:exported="false"
+            />
+        <meta-data
+            android:name="com.bugsnag.android.API_KEY"
+            android:value="@string/bugsnag_api_key"
+            />
+        <!--
+        https://firebase.google.com/docs/crashlytics/customize-crash-reports?authuser=0&platform=android#enable-reporting
+        -->
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${firebaseCrashlyticsEnabled}"
+            />
+
+        <!--
+        https://firebase.google.com/docs/analytics/configure-data-collection?platform=android#disable_data_collection
+        -->
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="${firebaseAnalyticsEnabled}"
+            />
+        <!--
+        https://firebase.google.com/docs/perf-mon/disable-sdk?platform=android#disable-library
+        -->
+        <meta-data
+            android:name="firebase_performance_collection_enabled"
+            android:value="${firebasePerformanceEnabled}"
+            />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true"
+            />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts"
+            />
+    </application>
+
+</manifest>

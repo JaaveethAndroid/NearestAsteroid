@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    tools:context=".asteroidlist.AsteroidGraphScreen"
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="dev.filipebezerra.android.nearearthasteroids.asteroidlist.AsteroidListViewModel"
+            />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface"
+        android:fitsSystemWindows="true"
+        >
+        <com.mdgiitr.suyash.graphkit.BarGraph
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/barGraph"
+            app:bar_space="30"
+            app:label_text_size="10" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

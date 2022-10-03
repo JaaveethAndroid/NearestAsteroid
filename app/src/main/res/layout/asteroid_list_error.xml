@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="dev.filipebezerra.android.nearearthasteroids.asteroidlist.AsteroidListViewModel"
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/large_spacing"
+        bind:initialAsteroidDataState="@{viewModel.initialAsteroidDataState}"
+        >
+
+        <ImageView
+            android:id="@+id/no_network_image"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/error_loading_image_content_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_connection_error"
+            app:tint="?attr/colorPrimary"
+            />
+
+        <TextView
+            android:id="@+id/offline_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_spacing"
+            android:text="@string/offline_text"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/no_network_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/no_network_image"
+            />
+
+        <TextView
+            android:id="@+id/help_text_offline_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/help_text_offline_text"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/offline_text"
+            app:layout_constraintTop_toBottomOf="@+id/offline_text"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

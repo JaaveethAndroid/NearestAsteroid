@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Global -->
+    <string name="navigation_content_description">Navegar de regreso a %s</string>
+    <string name="unlabelled_destination">pantalla anterior</string>
+    <string name="asteroid_list">Lista de asteroides</string>
+
+    <!-- Asteroid List screen -->
+    <string name="asteroid_image_content_description">Tamaño estimado del asteroide</string>
+    <string name="share_asteroid_content_description">Compartir %s</string>
+    <string name="read_more_about_asteroid_content_description">Leer más sobre el asteroide %s</string>
+    <string name="error_loading_image_content_description">Error al cargar datos de asteroides desde la imagen de Internet</string>
+    <string name="asteroid_name_format">Asteroide %s</string>
+    <string name="offline_text">Houston, tenemos un problema</string>
+    <string name="help_text_offline_text">
+        Tu red no está disponible. Comprueba tu conexión de datos o wifi.
+        Su red parece no estar disponible, no pudimos cargar datos de Internet.
+        Comprueba tu conexión de datos o wifi. ¡Intentaremos de nuevo en unos segundos!
+    </string>
+    <string name="share_asteroid_text">
+        Descubrí que el asteroide %s pasa cerca de la Tierra y probablemente también te gustará
+        comprobarlo usando la aplicación Near-Earth Asteroids.
+    </string>
+
+    <!-- Asteroid Detail screen -->
+    <string name="asteroid_detail_image_content_description">Imagen de asteroide siendo peligroso o seguro</string>
+    <string name="close_approach_date">Fecha aproximación:</string>
+    <string name="absolute_magnitude_label">Magnitud absoluta:</string>
+    <string name="relative_velocity_label">Velocidad relativa:</string>
+    <string name="estimated_diameter_label">Diámetro estimado:</string>
+    <string name="distance_from_earth_label">Distancia de la Tierra:</string>
+    <string name="orbit_class_description_label">Descripción de la órbita</string>
+</resources>

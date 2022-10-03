@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nea_navigation"
+    app:startDestination="@id/asteroid_list"
+    >
+
+    <fragment
+        android:id="@+id/asteroid_list"
+        android:name="dev.filipebezerra.android.nearearthasteroids.asteroidlist.AsteroidListScreen"
+        android:label="@string/asteroid_list"
+        tools:layout="@layout/asteroid_list_screen"
+        >
+        <action
+            android:id="@+id/action_asteroid_list_to_asteroid_detail"
+            app:destination="@id/asteroid_detail"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"
+            />
+        <action
+            android:id="@+id/action_asteroid_list_to_asteroidGraphScreen"
+            app:destination="@id/asteroidGraphScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/asteroid_detail"
+        android:name="dev.filipebezerra.android.nearearthasteroids.asteroiddetail.AsteroidDetailScreen"
+        tools:layout="@layout/asteroid_detail_screen"
+        >
+        <argument
+            android:name="asteroid"
+            app:argType="dev.filipebezerra.android.nearearthasteroids.domain.Asteroid"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/asteroidGraphScreen"
+        android:name="dev.filipebezerra.android.nearearthasteroids.asteroidlist.AsteroidGraphScreen"
+        tools:layout="@layout/asteroid_graph" />
+</navigation>

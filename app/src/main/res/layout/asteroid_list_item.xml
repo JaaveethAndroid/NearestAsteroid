@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="asteroidItemListener"
+            type="dev.filipebezerra.android.nearearthasteroids.asteroidlist.AsteroidItemListener"
+            />
+        <variable
+            name="asteroid"
+            type="dev.filipebezerra.android.nearearthasteroids.domain.Asteroid"
+            />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/asteroid_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/small_spacing"
+            android:onClick="@{() -> asteroidItemListener.onItemClicked(asteroid)}"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/stroke_color"
+            app:cardElevation="0dp"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/normal_spacing"
+                >
+
+                <TextView
+                    android:id="@+id/asteroid_name_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/normal_spacing"
+                    android:layout_marginEnd="@dimen/normal_spacing"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="@{@string/asteroid_name_format(asteroid.name)}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintBottom_toBottomOf="@+id/asteroid_image"
+                    app:layout_constraintEnd_toStartOf="@+id/asteroid_image"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/asteroid_image"
+                    tools:text="Asteroid 7753 (1988 1988 1988 1988 1988 1988 1988 1988 XB)"
+                    />
+
+                <ImageView
+                    android:id="@+id/asteroid_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="@dimen/normal_spacing"
+                    android:layout_marginEnd="@dimen/normal_spacing"
+                    android:contentDescription="@string/asteroid_image_content_description"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:asteroidImageSize="@{asteroid}"
+                    tools:src="@drawable/arenas_08_morethan50ld"
+                    />
+
+                <TextView
+                    android:id="@+id/asteroid_orbit_class_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/normal_spacing"
+                    android:lineSpacingExtra="@dimen/default_line_spacing_extra"
+                    android:text="@{asteroid.orbitClassDescription}"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/asteroid_image"
+                    tools:text="Near-Earth asteroid orbits which cross the Earth’s orbit similar to that of 1862 Apollo"
+                    />
+
+                <Button
+                    android:id="@+id/share_button"
+                    style="@style/Widget.NearEarthAsteroids.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/min_size_control"
+                    android:minWidth="@dimen/min_size_control"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="@dimen/normal_spacing"
+                    android:contentDescription="@{@string/share_asteroid_content_description(asteroid.name)}"
+                    android:onClick="@{() -> asteroidItemListener.onShareClicked(asteroid)}"
+                    app:icon="@drawable/ic_twotone_share_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/asteroid_orbit_class_text"
+                    />
+
+                <Button
+                    android:id="@+id/more_info_button"
+                    style="@style/Widget.NearEarthAsteroids.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/min_size_control"
+                    android:minWidth="@dimen/min_size_control"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:contentDescription="@{@string/read_more_about_asteroid_content_description(asteroid.name)}"
+                    android:onClick="@{() -> asteroidItemListener.onMoreInfoClicked(asteroid)}"
+                    app:icon="@drawable/ic_twotone_info_24"
+                    app:layout_constraintEnd_toStartOf="@+id/share_button"
+                    app:layout_constraintTop_toTopOf="@+id/share_button"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,117 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f22e5bd58f05bdf5ab2ea8a190235821",
+    "entities": [
+      {
+        "tableName": "asteroids",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `neo_id` TEXT, `name` TEXT, `nasa_jpl_url` TEXT, `absolute_magnitude` REAL, `is_potentially_hazardous` INTEGER, `orbit_class_description` TEXT, `estimated_diameter_min_in_meters` REAL, `estimated_diameter_max_in_meters` REAL, `close_approach_data_date` INTEGER, `close_approach_data_relative_velocity_kps` REAL, `close_approach_data_miss_distance_km` REAL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "neoId",
+            "columnName": "neo_id",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nasaJplUrl",
+            "columnName": "nasa_jpl_url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "absoluteMagnitude",
+            "columnName": "absolute_magnitude",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isPotentiallyHazardousAsteroid",
+            "columnName": "is_potentially_hazardous",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "orbitClassDescription",
+            "columnName": "orbit_class_description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estimatedDiameter.minimumInMeters",
+            "columnName": "estimated_diameter_min_in_meters",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estimatedDiameter.maximumInMeters",
+            "columnName": "estimated_diameter_max_in_meters",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "closeApproachData.approachDate",
+            "columnName": "close_approach_data_date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "closeApproachData.relativeVelocityKilometersPerSecond",
+            "columnName": "close_approach_data_relative_velocity_kps",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "closeApproachData.missDistanceInKilometers",
+            "columnName": "close_approach_data_miss_distance_km",
+            "affinity": "REAL",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_asteroids_neo_id",
+            "unique": true,
+            "columnNames": [
+              "neo_id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_asteroids_neo_id` ON `${TABLE_NAME}` (`neo_id`)"
+          },
+          {
+            "name": "index_asteroids_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_asteroids_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f22e5bd58f05bdf5ab2ea8a190235821')"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Global -->
+    <string name="navigation_content_description">Navegue de volta para %s</string>
+    <string name="unlabelled_destination">tela anterior</string>
+    <string name="asteroid_list">Lista de asteróides</string>
+
+    <!-- Asteroid List screen -->
+    <string name="asteroid_image_content_description">Tamanho estimado do asteróide</string>
+    <string name="share_asteroid_content_description">Compartilhar %s</string>
+    <string name="read_more_about_asteroid_content_description">Leia mais sobre o asteróide %s</string>
+    <string name="error_loading_image_content_description">Erro ao carregar dados de asteróides da imagem da Internet</string>
+    <string name="asteroid_name_format">Asteróide %s</string>
+    <string name="offline_text">Houston, nós temos um problema</string>
+    <string name="help_text_offline_text">
+        Sua rede parece estar indisponível, não foi possível carregar os dados da Internet.
+        Verifique seus dados ou conexão wi-fi. Tentaremos novamente em alguns segundos!
+    </string>
+    <string name="share_asteroid_text">
+        Eu descobri que o asteróide %s está passando perto da Terra e você provavelmente gostaria
+        de dar uma olhada também usando o aplicativo Near-Earth Asteroids.
+    </string>
+
+    <!-- Asteroid Detail screen -->
+    <string name="asteroid_detail_image_content_description">Imagem de asteróide sendo perigoso ou seguro</string>
+    <string name="close_approach_date">Data de aproximação:</string>
+    <string name="absolute_magnitude_label">Magnitude absoluta:</string>
+    <string name="relative_velocity_label">Velocidade relativa:</string>
+    <string name="estimated_diameter_label">Diâmetro estimado:</string>
+    <string name="distance_from_earth_label">Distância da Terra:</string>
+    <string name="orbit_class_description_label">Descrição da órbita</string>
+</resources>

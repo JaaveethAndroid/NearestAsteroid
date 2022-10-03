@@ -1,0 +1,186 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.firebase-perf'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    def nasaApiKey = project.findProperty("nasa_api_key")
+
+    def bugsnagApiKey = project.findProperty("bugsnag_api_key")
+
+    defaultConfig {
+        applicationId "dev.jaaveeth.android.nearearthasteroids"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "0.0.1"
+        archivesBaseName = 'nea_app'
+        vectorDrawables.useSupportLibrary true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resConfigs "en", "pt-rBR", "es"
+
+        buildConfigField("String", "NASA_API_KEY", "\"sTxMQWQ1RRrPodthyMcaSwlrXhKWii7AiH8Z69PM\"")
+
+        javaCompileOptions {
+            // https://developer.android.com/studio/build/optimize-your-build#incremental-annotation-processor-support
+            annotationProcessorOptions {
+                arguments << [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true"]
+            }
+        }
+
+        manifestPlaceholders << [
+                firebaseCrashlyticsEnabled: false,
+                firebaseAnalyticsEnabled: false,
+                firebasePerformanceEnabled: false
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+
+            // https://developer.android.com/studio/build/optimize-your-build#disable_crunching
+            crunchPngs false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders << [
+                    firebaseCrashlyticsEnabled: true,
+                    firebaseAnalyticsEnabled: true,
+                    firebasePerformanceEnabled: true
+            ]
+        }
+    }
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        // https://developer.android.com/studio/write/java8-support#library-desugaring
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    packagingOptions {
+        exclude 'DebugProbesKt.bin'
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+}
+
+dependencies {
+    // Kotlin
+    //noinspection DifferentStdlibGradleVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.kotlin_version"
+
+    // Android
+    // https://developer.android.com/jetpack/androidx/releases/core
+    implementation "androidx.core:core-ktx:$rootProject.core_ktx_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/appcompat
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/activity
+    implementation "androidx.activity:activity-ktx:$rootProject.activity_version"
+
+    // https://github.com/material-components/material-components-android/releases
+    implementation "com.google.android.material:material:$rootProject.material_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/constraintlayout
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayout_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$rootProject.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycle_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.nav_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/room
+    implementation "androidx.room:room-runtime:$rootProject.room_version"
+    kapt "androidx.room:room-compiler:$rootProject.room_version"
+    implementation "androidx.room:room-ktx:$rootProject.room_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/recyclerview
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerview_version"
+
+    // https://developer.android.com/studio/write/java8-support-table
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$rootProject.desugar_jdk_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/hilt
+    // https://codelabs.developers.google.com/codelabs/android-hilt/#0
+
+    // https://developer.android.com/jetpack/androidx/releases/work
+    implementation "androidx.work:work-runtime-ktx:$rootProject.work_version"
+
+    // https://developer.android.com/jetpack/androidx/releases/browser
+    implementation "androidx.browser:browser:$rootProject.browser_version"
+
+    // Firebase
+    implementation platform("com.google.firebase:firebase-bom:$rootProject.firebase_version")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
+
+    // Third-party
+    // https://github.com/square/retrofit/blob/master/CHANGELOG.md
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit_version"
+
+    // https://square.github.io/okhttp/changelog/
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3_version"
+
+    // https://github.com/JakeWharton/timber/blob/master/CHANGELOG.md
+    implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
+
+    // https://github.com/square/moshi/blob/master/CHANGELOG.md
+    // https://medium.com/@BladeCoder/advanced-json-parsing-techniques-using-moshi-and-kotlin-daf56a7b963d
+    implementation "com.squareup.moshi:moshi:$rootProject.moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshi_version"
+    kapt ("com.squareup.moshi:moshi-kotlin-codegen:$rootProject.moshi_version", {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+    })
+
+    // https://github.com/facebook/shimmer-android/releases
+    implementation "com.facebook.shimmer:shimmer:$rootProject.shimmer_version"
+
+    // https://github.com/bumptech/glide/releases/
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    implementation ("com.github.bumptech.glide:okhttp3-integration:$rootProject.glide_version", {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    })
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glide_version"
+
+    // https://github.com/facebook/SoLoader/releases
+    debugImplementation "com.facebook.soloader:soloader:$rootProject.soloader_version"
+
+    // https://github.com/facebook/flipper/blob/master/desktop/static/CHANGELOG.md
+    debugImplementation "com.facebook.flipper:flipper:$rootProject.flipper_version"
+    debugImplementation "com.facebook.flipper:flipper-network-plugin:$rootProject.flipper_version"
+    releaseImplementation "com.facebook.flipper:flipper-noop:$rootProject.flipper_version"
+
+    implementation "com.mdgiitr.suyash:graphkit:0.9.0"
+
+    // Testing
+    testImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.core_testing_version"
+    androidTestImplementation ("androidx.test.espresso:espresso-core:$rootProject.espresso_version", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidx_junit_version"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.room_version"
+}

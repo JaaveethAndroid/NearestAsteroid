@@ -1,0 +1,42 @@
+<resources>
+    <!-- Global -->
+    <string name="app_name" translatable="false">Near-Earth Asteroids</string>
+    <string name="navigation_content_description">Navigate back to %s</string>
+    <string name="unlabelled_destination">previous screen</string>
+    <string name="asteroid_list">Asteroid list</string>
+
+    <!-- Asteroid List screen -->
+    <string name="asteroid_image_content_description">Estimated asteroid size</string>
+    <string name="share_asteroid_content_description">Share %s</string>
+    <string name="read_more_about_asteroid_content_description">Read more about the asteroid %s</string>
+    <string name="error_loading_image_content_description">
+        Error loading asteroids data from the internet image
+    </string>
+    <string name="asteroid_name_format">Asteroid %s</string>
+    <string name="offline_text">Houston, we have a problem</string>
+    <string name="help_text_offline_text">
+        Your network seems to be unavailable, we couldn\'t load data from the internet.
+        Check your data or wifi connection. We\'ll retry in a few seconds!
+    </string>
+    <string name="picture_of_day_placeholder" translatable="false">Messier Craters in Stereo</string>
+    <string name="share_asteroid_text">
+        I have discovered the asteroid %s is passing near the Earth and you\'ll probably like to
+        check out too using the Near-Earth Asteroids app.
+    </string>
+
+    <!-- Asteroid Detail screen -->
+    <string name="asteroid_detail_image_content_description" translation_description="Content description for the header / hero image that is show at the top of the asteroid detail screen.">
+        Image of asteroid being hazardous or safe
+    </string>
+    <string name="close_approach_date">Close approach date:</string>
+    <string name="close_approach_date_format" translatable="false">%1$s (%2$s)</string>
+    <string name="absolute_magnitude_label">Absolute magnitude:</string>
+    <string name="absolute_magnitude_format" translatable="false">%.1f (H)</string>
+    <string name="relative_velocity_label">Relative velocity:</string>
+    <string name="relative_velocity_format" translatable="false">%.3f (km/s)</string>
+    <string name="estimated_diameter_label">Estimated diameter:</string>
+    <string name="estimated_diameter_format" translatable="false">%1$.3f - %2$.3f (m)</string>
+    <string name="distance_from_earth_label">Distance from Earth:</string>
+    <string name="distance_from_earth_format" translatable="false">%.3f (km)</string>
+    <string name="orbit_class_description_label">Orbit description</string>
+</resources>
